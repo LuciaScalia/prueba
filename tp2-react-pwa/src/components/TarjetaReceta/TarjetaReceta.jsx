@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import ROUTES from '../../const/Routes';
+import ROUTES from '../../Const/Routes';
 import { useTranslation } from 'react-i18next';
 
 const TarjetaReceta = ({ receta, onToggleFavorito }) => {

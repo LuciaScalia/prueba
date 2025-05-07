@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
-import { ROUTES } from '../../const/Routes';
+import { ROUTES } from '../../Const/Routes';
 import { useNavigate } from "react-router-dom";
 
 const Detalles = () => {
