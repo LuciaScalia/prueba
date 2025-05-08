@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
-import ROUTES from "../../Const/Routes";
+import ROUTES from "../../const/Routes";
 import { useTranslation } from "react-i18next";
 import i18n from "../../i18";
 

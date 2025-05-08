@@ -1,5 +1,5 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom"
-import ROUTES from './Const/Routes'
+import ROUTES from './const/Routes'
 import Home from './pages/Home/Home'
 import Detalles from './pages/Detalles/Detalles';
 import Favoritos from './pages/Favoritos/Favoritos';

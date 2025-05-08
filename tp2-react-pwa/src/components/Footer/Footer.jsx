@@ -1,4 +1,8 @@
+import { useTranslation } from "react-i18next";
+
 const Footer = () => {
+    const { t } = useTranslation();
+  
     return (
       <footer className="bg-white text-black text-center py-6 mt-auto shadow-md border-t border-gray-300">
         <div className="flex justify-center gap-6 mb-4">
@@ -22,7 +26,7 @@ const Footer = () => {
           </a>
         </div>
   
-        <p className="text-sm">© {new Date().getFullYear()} Mi Aplicación - Todos los derechos reservados.</p>
+        <p className="text-sm">© {new Date().getFullYear()} Cooks - {t('allrightsreserved')}.</p>
       </footer>
     );
   };

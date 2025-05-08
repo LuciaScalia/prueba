@@ -6,12 +6,12 @@ const Home = () => {
   const [recetas, setRecetas] = useState();
   const [busqueda, setBusqueda] = useState('');
   const [recetasFiltradas, setRecetasFiltradas] = useState([]);
-  const { t } = useTranslation();
+  const { i18n, t } = useTranslation();
 
   useEffect(() => {
     const obtenerRecetas = async () => {
       try {
-        const response = await fetch('https://68113cbe3ac96f7119a4032e.mockapi.io/api/v1/Recetas');
+        const response = await fetch(i18n.language === "es" ? 'https://68113cbe3ac96f7119a4032e.mockapi.io/api/v1/Recetas' : "https://681bd8566ae7c794cf6ff220.mockapi.io/api/v2/recetasIngles");
         if (!response.ok) throw new Error(`Error en la solicitud: ${response.status}`);
         const data = await response.json();
         setRecetas(data);
@@ -20,7 +20,7 @@ const Home = () => {
       }
     };
     obtenerRecetas();
-  }, []);
+  }, [i18n.language]);
   
   useEffect(() => {
     if (!recetas) return;

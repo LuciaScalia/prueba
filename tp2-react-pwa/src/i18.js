@@ -20,7 +20,8 @@ i18n.use(initReactI18next).init({
         noResultsFound: "No results found",
         noFavorites: "There are no recipes",
         notFound404: "Page not Found",
-        backHome: "Back to Home"
+        backHome: "Back to Home",
+        allrightsreserved: "All rights reserved"
       }
     },
     es: {
@@ -40,12 +41,13 @@ i18n.use(initReactI18next).init({
         noFavorites: "No hay recetas",
         noResultsFound: "No se encontraron resultados",
         notFound404: "Pagina no Encontrada",
-        backHome: "Volver al inicio"
+        backHome: "Volver al inicio",
+        allrightsreserved: "Todos los derechos reservados"
       }
     }
   },
   lng: localStorage.getItem("i18nextLng"), // Idioma por defecto
-  fallbackLng: "en",
+  fallbackLng: "es",
   interpolation: {
     escapeValue: false
   }

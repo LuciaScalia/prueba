@@ -1,41 +1,36 @@
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
-import { ROUTES } from '../../Const/Routes';
+import { ROUTES } from '../../const/Routes';
 import { useNavigate } from "react-router-dom";
 
 const Detalles = () => {
   const {id} = useParams();  
   const [recetaEnVista, setRecetaEnVista] = useState();
-  const { t } = useTranslation();
+  const { i18n, t } = useTranslation();
   const [notFound, setNotFound] = useState(false);
   const navigate = useNavigate();
   
-  const detallesReceta = async () => {
-    try {
-        const detallesRecetaResult = await fetch(`https://68113cbe3ac96f7119a4032e.mockapi.io/api/v1/Recetas/${id}`);
-
-        if (!detallesRecetaResult.ok) {
-          setNotFound(true);
-          return;
-        }
-
-        const detallesRecetaResultParsed = await detallesRecetaResult.json();
-
-        if (!detallesRecetaResultParsed || Object.keys(detallesRecetaResultParsed).length === 0) {
-          setNotFound(true);
-          return;
-        }
-
-        setRecetaEnVista(detallesRecetaResultParsed);
-    } catch (error) {
-        console.log("Error al recuperar los datos: " + error);
-    }
-  }; 
-
   useEffect(() => {
+    const detallesReceta = async () => {
+      try {
+          const detallesRecetaResult = await fetch(i18n.language === "es" ? `https://68113cbe3ac96f7119a4032e.mockapi.io/api/v1/Recetas/${id}` : `https://681bd8566ae7c794cf6ff220.mockapi.io/api/v2/recetasIngles/${id}`);
+          if (!detallesRecetaResult.ok) {
+            setNotFound(true);
+            return;
+          }
+          const detallesRecetaResultParsed = await detallesRecetaResult.json();
+          if (!detallesRecetaResultParsed || Object.keys(detallesRecetaResultParsed).length === 0) {
+            setNotFound(true);
+            return;
+          }
+          setRecetaEnVista(detallesRecetaResultParsed);
+      } catch (error) {
+          console.log("Error al recuperar los datos: " + error);
+      }
+    }; 
     detallesReceta();
-  }, [id]);
+  }, [id, i18n.language]);
 
   if (notFound) {
     return (
